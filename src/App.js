@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -51,6 +50,7 @@ function App() {
     switch (input) {
       case "=":
         if (display === "0" || typeof display == "number") return;
+        // eslint-disable-next-line
         setDisplay(eval(display.replace(endOps, "")));
         display % 1 > 0 ? setDecimalFlag(true) : setDecimalFlag(false);
         break;
@@ -67,6 +67,7 @@ function App() {
       case "/":
       case "*":
         setDecimalFlag(false);
+      // eslint-disable-next-line
       default:
         setDisplay(sanitize(display + input));
     }
@@ -85,6 +86,7 @@ function App() {
             size="sm"
             className={buttons[i + 0].key + " col-3"}
             onClick={event => {
+              event.target.blur();
               updateDisplay(event.target.className[0]);
             }}
           >
@@ -97,6 +99,7 @@ function App() {
             size="sm"
             className={buttons[i + 1].key + " col-3"}
             onClick={event => {
+              event.target.blur();
               updateDisplay(event.target.className[0]);
             }}
           >
@@ -109,6 +112,7 @@ function App() {
             size="sm"
             className={buttons[i + 2].key + " col-3"}
             onClick={event => {
+              event.target.blur();
               updateDisplay(event.target.className[0]);
             }}
           >
@@ -121,6 +125,7 @@ function App() {
             size="sm"
             className={buttons[i + 3].key + " col-3"}
             onClick={event => {
+              event.target.blur();
               updateDisplay(event.target.className[0]);
             }}
           >
@@ -145,6 +150,7 @@ function App() {
           key={buttons[0].id}
           className={buttons[0].key + " col-2"}
           onClick={event => {
+            event.target.blur();
             updateDisplay(event.target.className[0]);
           }}
         >
