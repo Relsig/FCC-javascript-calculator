@@ -6,16 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 const dupOps = /[+/*](?!(-?(\d|$)))|(-(?!\d|$))/g;
-const leadZeros = /(^|[+/*-])0+(?!$|\.)/g;
+const leadZeros = /(^|[+/*-])0+(?!$|[.+/*-])/g;
 const endOps = /[/*+-]{1,2}$/gm;
 const illegalCharacters = /[^\d=/*+-.]/g;
 
 const sanitize = input => {
-  console.log(`input: ${input}`);
   input = input.replace(dupOps, "");
-  console.log(`!dupOp: ${input}`);
   input = input.replace(leadZeros, "$1");
-  console.log(`!0*#: ${input}`);
   input = input.replace(illegalCharacters, "");
   return input;
 };
